@@ -48,8 +48,20 @@ void LcdCfg() {
   delay(3000);
   lcd.clear();
 }
+//CLEAR ALL VARIABLES MIN AND MAX
 void clearMinMax() {
-  //LIMPAR MAX MIN
+  F_MIN_LAMBDA = 0;
+  F_MAX_LAMBDA = 0;
+  F_MIN_MAP = 0;
+  F_MAX_MAP = 0;
+  F_MIN_TEMP_WATER = 0;
+  F_MAX_TEMP_WATER = 0;
+  F_MIN_TEMP_AIR = 0;
+  F_MAX_TEMP_AIR = 0;
+  F_MIN_TEMP_OIL = 0;
+  F_MAX_TEMP_OIL = 0;
+  F_MIN_PRESS_OIL = 0;
+  F_MAX_PRESS_OIL = 0;
 }
 
 /*
@@ -85,7 +97,7 @@ enum showing {
 unsigned long counter; //Pra contar os Millis
 unsigned long previous; //Pra contar a ultima vez que o botao foi pressionado
 int last = sizeof(showing) - 1; //Assim sempre que colocar mais um sensor não precisamos mudar lá embaixo quando apertarmos um botão
-int IntervalShowMenu = 5; //Intervalo em segundos que ele fica mostrando em cada sensor
+unsigned int IntervalShowMenu = 5; //Intervalo em segundos que ele fica mostrando em cada sensor
 
 void setup() {
   StartPins();
@@ -124,18 +136,14 @@ void verifyForPressedButton() { //Ve se o botão for pressionado e altera o que 
     jumpToPrevious();
   }
 }
-void jumpToNext() { //Pula para o próximo se o estado atual não for o ultimo ou volta pro primeiro se ele for
-  if (CurrentMenu == last) {
-    CurrentMenu = 0;
-  } else {
-    CurrentMenu += 1;
-  }
-  previous = millis();
-}
-//TO DO, a função que retorna pro anterior
-void jumpToPrevious() {
 
+//TODO, função que avanca para o proximo menu
+void jumpToNext() { 
 }
+//TO DO, função que retorna pro anterior
+void jumpToPrevious() {
+}
+
 //TO DO, as funções que mostram cada leitura separadamente
 void showLambda() {
   int value_lambda = map(analogRead(SEN_LAMBDA), 0, 1023, 0, 5000);
