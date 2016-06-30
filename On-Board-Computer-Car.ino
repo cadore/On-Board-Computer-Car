@@ -1,3 +1,33 @@
+/*
+  
+  please take a look on the licence file !
+  
+  Electric Diagram (schematics)
+   LCD RS pin to digital pin 12
+   LCD Enable pin to digital pin 11
+   LCD D4 pin to digital pin 5
+   LCD D5 pin to digital pin 4
+   LCD D6 pin to digital pin 3
+   LCD D7 pin to digital pin 2
+   LCD R/W pin to ground
+   LCD VSS pin to ground
+   LCD VCC pin to 5V
+   10K resistor:
+   ends to +5V and ground
+   wiper to LCD VO pin (pin 3)
+   
+   sensors pinouts
+   Oxygen sensor (Narrowband 4wire bosh type) -----------------------PIN A0
+   Vaccum/Pressure Sensor (SENSOR MAP -1+6bar - PANDOO EFI-4)--------PIN A1
+   WATER TEMPERATURE SENSOR (LM35-------------)----------------------PIN A2
+   AIR TEMPERATURE SENSOR (LM35)-------------------------------------PIN A3
+   OIL TEMPERATURE SENSOR (LM35)-------------------------------------PIN A4
+   OIL PRESSURE SENSOR 0-30BAR (5V)----------------------------------PIN A5
+   SPST PUSH SWITCH -------------------------------------------------PIN 7
+   SPST PUSH SWITCH -------------------------------------------------PIN 6
+   MOSFET N-CHANNEL TO LCD BACKLIGHT --------------------------------PIN 9
+*/
+
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 //GLOBAL ESCOPE
@@ -63,22 +93,6 @@ void clearMinMax() {
   F_MIN_PRESS_OIL = 0;
   F_MAX_PRESS_OIL = 0;
 }
-
-/*
-  Electric Diagram
-   LCD RS pin to digital pin 12
-   LCD Enable pin to digital pin 11
-   LCD D4 pin to digital pin 5
-   LCD D5 pin to digital pin 4
-   LCD D6 pin to digital pin 3
-   LCD D7 pin to digital pin 2
-   LCD R/W pin to ground
-   LCD VSS pin to ground
-   LCD VCC pin to 5V
-   10K resistor:
-   ends to +5V and ground
-   wiper to LCD VO pin (pin 3)
-*/
 
 //Define all possible status that will be used, and the sequence for them
 enum showing {
