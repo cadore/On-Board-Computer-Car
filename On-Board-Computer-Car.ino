@@ -150,6 +150,22 @@ void showLambda() {
   if (value_lambda > F_MAX_LAMBDA) F_MAX_LAMBDA = value_lambda; //store values from lambda
   if (value_lambda < F_MIN_LAMBDA) F_MIN_LAMBDA = value_lambda; // MAX AND MIN
   lcd.clear();
+    if (value_lambda > 950){
+  lcd.setCursor(2, 0);
+  lcd.print("MISTURA RICA");
+  lcd.setCursor(0, 1);
+  lcd.print("LAMBDA: ");
+  lcd.print(value_lambda);
+  lcd.print("mV");
+    }
+    if (value_lambda < 450){
+  lcd.setCursor(2, 0);
+  lcd.print("MISTURA  POBRE");
+  lcd.setCursor(0, 1);
+  lcd.print("LAMBDA: ");
+  lcd.print(value_lambda);
+  lcd.print("mV");
+    }
   lcd.setCursor(0, 0);
   lcd.print("LAMBDA: ");
   lcd.print(value_lambda);
