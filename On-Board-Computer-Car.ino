@@ -12,7 +12,7 @@ const int BUTTON_DOWN = 6;
 const int DISPLAY_BACKLIGHT = 9;
 
 //VARIABLES OF MIN AND MAX VALUES
-float F_MIN_LAMBDA = 0;
+float F_MIN_LAMBDA = 1000;
 float F_MAX_LAMBDA = 0;
 float F_MIN_MAP = 0;
 float F_MAX_MAP = 0;
@@ -147,6 +147,8 @@ void jumpToPrevious() {
 //TO DO, as funções que mostram cada leitura separadamente
 void showLambda() {
   int value_lambda = map(analogRead(SEN_LAMBDA), 0, 1023, 0, 5000);
+  if (value_lambda > F_MAX_LAMBDA) F_MAX_LAMBDA = value_lambda; //store values from lambda
+  if (value_lambda < F_MIN_LAMBDA) F_MIN_LAMBDA = value_lambda; // MAX AND MIN
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("LAMBDA: ");
@@ -157,7 +159,7 @@ void showLambda() {
   lcd.print(F_MIN_LAMBDA);
   lcd.print(" MAX ");
   lcd.print(F_MAX_LAMBDA);
-  delay(5);
+  delay(5); // give some time to a/d converter
 }
 void showOilPressure() {
 
