@@ -19,7 +19,7 @@
    sensors pinouts
    Oxygen sensor (Narrowband 4wire bosh type) -----------------------PIN A0
    Vaccum/Pressure Sensor (SENSOR MAP -1+6bar - PANDOO EFI-4)--------PIN A1
-   WATER TEMPERATURE SENSOR (LM35-------------)----------------------PIN A2
+   WATER TEMPERATURE SENSOR (LM35)-----------------------------------PIN A2
    AIR TEMPERATURE SENSOR (LM35)-------------------------------------PIN A3
    OIL TEMPERATURE SENSOR (LM35)-------------------------------------PIN A4
    OIL PRESSURE SENSOR 0-30BAR (5V)----------------------------------PIN A5
