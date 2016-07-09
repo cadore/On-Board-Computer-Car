@@ -531,14 +531,14 @@ void showLambda() {
   delay(5); // give some time to a/d converter
 }
 void showOilPressure() {
-    int Value_PRESS_OIL = map(analogRead(SEN_MAP), 0, 1023, 0, 30);
-    if (Value_PRESS_OIL > F_MAX_PRESS_OIL) F_MAX_PRESS_OIL = Value_PRESS_OIL; //store values from lambda
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Oleo: ");
-    lcd.print(Value_PRESS_OIL);
-    lcd.setCursor(10, 0);
-    lcd.print("BAR");
+  int Value_PRESS_OIL = map(analogRead(SEN_PRESS_OIL), 0, 1023, 0, 30);
+  if (Value_PRESS_OIL > F_MAX_PRESS_OIL) F_MAX_PRESS_OIL = Value_PRESS_OIL; //store values from lambda
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Oleo: ");
+  lcd.print(Value_PRESS_OIL);
+  lcd.setCursor(10, 0);
+  lcd.print("BAR");
 }
 void showMapStatus() {
   int Value_map = map(analogRead(SEN_MAP), 0, 1023, 0, 6000);
@@ -586,6 +586,19 @@ void showMapStatus() {
 
 }
 void showWaterTemp() {
+  float value_temperatura = (analogRead(SEN_TEMP_WATER)/1024.0)*500;
+  if (value_temperatura > F_MAX_TEMP_WATER) F_MAX_TEMP_WATER = value_temperatura; //store values
+  if (value_temperatura < F_MIN_TEMP_WATER) F_MIN_TEMP_WATER = value_temperatura; // MAX AND MIN
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Temperatura: ");
+  lcd.print(value_temperatura);
+  lcd.print(" C");
+  lcd.setCursor(0, 1);
+  lcd.print("MIN ");
+  lcd.print(F_MIN_TEMP_WATER);
+  lcd.print(" MAX ");
+  lcd.print(F_MAX_TEMP_WATER);
 
 }
 //Aqui a funcao que pula a cada 5 segundos o que vai ser mostrado
@@ -594,6 +607,3 @@ void jumpAutommatically() {
     jumpToNext();
   }
 }
-
-
-
