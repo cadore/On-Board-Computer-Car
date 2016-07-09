@@ -531,7 +531,14 @@ void showLambda() {
   delay(5); // give some time to a/d converter
 }
 void showOilPressure() {
-
+    int Value_PRESS_OIL = map(analogRead(SEN_MAP), 0, 1023, 0, 30);
+    if (Value_PRESS_OIL > F_MAX_PRESS_OIL) F_MAX_PRESS_OIL = Value_PRESS_OIL; //store values from lambda
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Oleo: ");
+    lcd.print(Value_PRESS_OIL);
+    lcd.setCursor(10, 0);
+    lcd.print("BAR");
 }
 void showMapStatus() {
   int Value_map = map(analogRead(SEN_MAP), 0, 1023, 0, 6000);
@@ -587,3 +594,6 @@ void jumpAutommatically() {
     jumpToNext();
   }
 }
+
+
+
